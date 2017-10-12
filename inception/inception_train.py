@@ -143,9 +143,9 @@ def _tower_loss(images, labels, num_classes, scope, reuse_variables=None):
     tf.summary.scalar(loss_name +' (raw)', l)
     tf.summary.scalar(loss_name, loss_averages.average(l))
 
-    with tf.control_dependencies([loss_averages_op]):
-      total_loss = tf.identity(total_loss)
-    return total_loss  #get the toatl loss of the tower 
+  with tf.control_dependencies([loss_averages_op]):
+    total_loss = tf.identity(total_loss)
+  return total_loss  #get the toatl loss of the tower 
 
 
 def _average_gradients(tower_grads):
